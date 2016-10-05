@@ -1,0 +1,114 @@
+﻿<Page xmlns:my="using:Windows.UI.Xaml.Controls.Maps" 
+    x:Class="lagou.JobPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lagou"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Margin="10,0">
+        <!-- <Image Source="{Binding Path=Image}" Width="90" Height="90" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>-->
+
+        <RichTextBlock  Margin="0,6,0,0"  Height="36"  FontSize="36" VerticalAlignment="Top">
+            <Paragraph>
+                <Run Text="{Binding Title}"></Run>
+            </Paragraph>
+        </RichTextBlock>
+        <RichTextBlock  Margin="0,50,0,0" FontSize="16" VerticalAlignment="Top">
+            <Paragraph>
+                <Run Text="{Binding Context}"></Run>
+            </Paragraph>
+        </RichTextBlock>
+
+        <Pivot Margin="0,80,0,60">
+            <PivotItem Header="" Margin="0">
+                <StackPanel >
+                    <RichTextBlock  FontSize="22" Margin="0,0,0,10">
+                        <Paragraph>
+                            <Run Text="{Binding  Path=Temptation}"></Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+
+                    <Grid Height="68">
+                        <AppBarButton Margin="-20,0,0,0"  >
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="$" FontSize="24"/>
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           Margin="50,0,0,0" FontSize="20" Text="{Binding  Path=Salary}"> </TextBlock>
+                    </Grid>
+                    <Grid Height="68">
+                        <AppBarButton Icon="Map" Margin="-20,0,0,0"  />
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           Margin="50,0,0,0" FontSize="20" Text="{Binding  Path=Address}"> </TextBlock>
+                    </Grid>
+                    <Grid Height="68">
+                        <AppBarButton Icon="OtherUser"   Margin="-20,0,0,0" />
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           Margin="50,0,0,0" FontSize="20" Text="{Binding  Path=Year}"> </TextBlock>
+                    </Grid>
+                    <Grid Height="68">
+                        <AppBarButton Icon="ContactPresence"  Margin="-20,0,0,0"  />
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           Margin="50,0,0,0" FontSize="20" Text="{Binding  Path=Edu}"> </TextBlock>
+                    </Grid>
+                    <Grid Height="68">
+                        <AppBarButton Icon="Clock"  Margin="-20,0,0,0"  />
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" 
+                           Margin="50,0,0,0" FontSize="20" Text="{Binding  Path=Natrue}"> </TextBlock>
+                    </Grid>
+
+
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="" Margin="0">
+                <ScrollViewer> 
+                    <StackPanel >
+                        <TextBlock FontSize="24" Margin="0,0,0,10">
+                        职位描述
+                        </TextBlock>
+                        <RichTextBlock  FontSize="18" x:Name="DESC">
+                        </RichTextBlock>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+            <PivotItem Margin="0" >
+                <Grid  Margin="0,0,0,40" >
+                    <!-- <TextBlock x:Name="ADDR" VerticalAlignment="Top" FontSize="16"></TextBlock>-->
+                    <my:MapControl x:Name="MAP" />
+                </Grid>
+            </PivotItem>
+        </Pivot>
+
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Stretch">投递</Button>
+        <Border x:Name="PROGRESSBG"  Background="#B2000000" Canvas.ZIndex="10" Visibility="Collapsed"  >
+            <ProgressRing x:Name="PROGRESS" 
+                      HorizontalContentAlignment="Stretch"
+                      VerticalContentAlignment="Stretch">
+            </ProgressRing>
+        </Border>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Content="aa">
+                <AppBarButton.Icon>
+                    <SymbolIcon/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Content="aa">
+                <AppBarButton.Icon>
+                    <SymbolIcon/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Content="aa">
+                <AppBarButton.Icon>
+                    <SymbolIcon/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </CommandBar>
+
+    </Page.BottomAppBar>
+</Page>

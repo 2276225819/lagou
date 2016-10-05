@@ -1,0 +1,58 @@
+﻿<ContentDialog
+    x:Class="lagou.CityDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lagou"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" >
+    <Grid  Height="480"  Background="Black" Margin="-20" Canvas.ZIndex="999"  >
+        <TextBlock Text="请选择" FontSize="24" VerticalAlignment="Top" Margin="10 "></TextBlock>  
+        <SemanticZoom x:Name="semanticZoom"  Margin="0,60,0,10">
+            <SemanticZoom.ZoomedInView>
+                <ListView x:Name="inView" >
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border Width="60" Height="60" BorderBrush="White" Margin="10" BorderThickness="2">
+                                        <TextBlock Text="{Binding Key}" FontSize="24"></TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <TextBlock x:ConnectionId='1' Margin="10" Text="{Binding Title}"  Height="40" FontSize="30"                          ></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+            <SemanticZoom.ZoomedOutView>
+                <GridView x:Name="outView"  
+                         HorizontalContentAlignment="Center" 
+                         VerticalContentAlignment="Center" 
+                         HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Stretch"
+                         Background="#FF292929">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="60" Height="60" BorderBrush="{Binding Group.Color}" Margin="10" BorderThickness="2">
+                                <TextBlock Text="{Binding Group.Key}" FontSize="24" Foreground="{Binding Group.Color}"></TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom> 
+    </Grid>
+</ContentDialog>
+
